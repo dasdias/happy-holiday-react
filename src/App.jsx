@@ -1,37 +1,31 @@
 // import './App.css';
-import { Footer } from './components/footer/Footer';
-import { Header } from './components/header/Header';
-import style from './App.css'; // удалить
+import { Footer } from './components/Footer/Footer';
+import { Header } from './components/Header/Header';
+import { Card } from './components/Card/Card';
+import { TextContextProvider } from './context/textContext';
+import { ImgContextProvider } from './context/imgContext';
+import { HolidaysContextProvider } from './context/holidaysContext';
 
 const wrapper = {
-  display: 'flex',
-  flexDirection: 'column',
-  height: '100vh'
+	display: 'flex',
+	flexDirection: 'column',
+	height: '100vh'
 };
 
 function App() {
-  return (
-    <div style={wrapper}>
-      <Header/>
-      <div style={style.card}>
-        <div className={style.wrapper}>
-          <img className={style.image} src="" alt="" />
-          <p className={style.felicitation}>
-            Поздравляю с днем рожденья!
-            Пусть будет жизнь полна веселья,
-            Не будет грусти и хлопот,
-            А только счастье круглый год!
-
-            Желаю творческих успехов,
-            Прекрасных дней, улыбок, смеха.
-            Любви, душевного тепла,
-            Как сказка, чтобы жизнь была!
-          </p>
-        </div>
-      </div>
-      <Footer/>
-    </div>
-  );
+	return (
+		<div style={wrapper}>
+			<HolidaysContextProvider>
+				<TextContextProvider>
+					<ImgContextProvider>
+						<Header />
+						<Card />
+						<Footer />
+					</ImgContextProvider>
+				</TextContextProvider>
+			</HolidaysContextProvider>
+		</div>
+	);
 }
 
 export default App;
